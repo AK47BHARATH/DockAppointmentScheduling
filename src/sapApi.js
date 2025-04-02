@@ -2,8 +2,8 @@ import axios from "axios";
 
 const BASE_URL = "https://s4hana23.arkania.com:44300/sap/opu/odata/sap/ZAKB_DOCK_APPOINTMENT_SRV?$format=json";
 const AUTH = {
-  username: "bharathak",
-  password: "Akbharath*1$23",
+  username: "",
+  password: "",
 };
 
 export const getAppointments = async () => {
