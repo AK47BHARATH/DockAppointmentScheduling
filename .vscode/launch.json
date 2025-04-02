@@ -1,0 +1,36 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch Chrome against localhost",
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceFolder}/frontend",
+            "sourceMaps": true
+        },
+
+        {
+            "name": "Launch Backend (Node.js)",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/backend/server.js",
+            "cwd": "${workspaceFolder}/backend",
+            "runtimeExecutable": "node",
+            "env": {
+                "PORT": "5000",
+                "NODE_ENV": "development"
+            },
+            "console": "integratedTerminal"
+        },
+
+        {
+            "name": "Attach to Backend (Node.js Debug)",
+            "type": "node",
+            "request": "attach",
+            "port": 9229,
+            "restart": true
+        }
+    ]
+}

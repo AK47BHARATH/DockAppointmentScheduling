@@ -1,0 +1,17 @@
+/* Ensure body height covers full viewport with a background image and gradient overlay */
+body, html {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('C:\Users\BharathAK\dock-scheduler-frontend\public\truck2.jpg') center/cover no-repeat fixed, 
+              linear-gradient(45deg, rgba(255, 154, 158, 0.6), rgba(250, 208, 196, 0.6), rgba(161, 140, 209, 0.6));
+  background-blend-mode: overlay;
+}
+
+/* Optional: If you want to maintain the animated gradient effect */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
