@@ -1,0 +1,241 @@
+/* Import SAP Fiori Font */
+@import url("https://fonts.googleapis.com/css2?family=72:wght@400;600&display=swap");
+
+/* Theme Variables */
+:root {
+  --bg-color: #FBF0EA;
+  --text-color: #4C240F;
+  --container-bg: #f6E0D5;
+  --input-bg: #F2D1BF;
+  --border-color: #c0d3e0;
+  --button-bg: #612E14;
+  --button-hover: #0057c2;
+  --slot-available: #D0632A;
+  --slot-booked: #EEC1AA;
+  --slot-completed: #1976d2;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode {
+  --bg-color: #1c1f26;
+  --text-color: #e3e9f2;
+  --container-bg: #2a2d38;
+  --input-bg: #3a3f4b;
+  --border-color: #5c6576;
+  --button-bg: #0a84ff;
+  --button-hover: #0068d7;
+}
+
+/* Global Styles */
+body {
+  font-family: "72", Arial, sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Main Container */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  background: var(--container-bg);
+  padding: 0px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 15px var(--shadow-color);
+  text-align: center;
+  transition: background 0.3s ease-in-out;
+}
+
+/* Title */
+.title {
+  font-size: 28px;
+  color: var(--text-color);
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.btn-theme {
+  background-color: var(--button-bg);
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background 0.3s ease-in-out, transform 0.2s;
+}
+
+.btn-theme:hover {
+  background-color: var(--button-hover);
+  transform: scale(1.05);
+}
+
+/* Input Section */
+.input-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: var(--input-bg);
+  border-radius: 10px;
+  transition: background 0.3s ease-in-out;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
+.input-group label {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--text-color);
+  margin-bottom: 5px;
+}
+
+.input-group input {
+  padding: 10px;
+  background: var(--container-bg);
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 14px;
+  color: var(--text-color);
+  transition: border-color 0.3s ease-in-out;
+}
+
+.input-group input:focus {
+  border-color: var(--button-bg);
+  outline: none;
+}
+
+/* Button */
+.btn-show {
+  background-color: var(--button-bg);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background 0.3s ease-in-out, transform 0.2s;
+}
+
+.btn-show:hover {
+  background-color: var(--button-hover);
+  transform: scale(1.05);
+}
+
+/* Appointment Table */
+.dock-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 25px;
+  background-color: var(--container-bg);
+  text-align: center;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 4px 10px var(--shadow-color);
+}
+
+.dock-table th, .dock-table td {
+  border: 1px solid var(--border-color);
+  padding: 14px;
+  font-size: 16px;
+  vertical-align: middle;
+}
+
+.dock-table th {
+  background-color: var(--button-bg);
+  color: white;
+  text-transform: uppercase;
+}
+
+/* Slot Styles */
+.slot {
+  padding: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s, background 0.3s ease-in-out;
+}
+
+/* Colors for Slots */
+.available {
+  background-color: var(--slot-available);
+  color: white;
+  border: 2px solid var(--slot-available);
+}
+
+.booked {
+  background: var(--slot-booked);
+  color: white;
+  border: 2px solid var(--slot-booked);
+}
+
+.completed {
+  background: var(--slot-completed);
+  color: white;
+  border: 2px solid var(--slot-completed);
+}
+
+.slot:hover {
+  transform: scale(1.05);
+}
+
+/* Date Picker */
+.date-picker {
+  padding: 10px;
+  font-size: 16px;
+  background: var(--input-bg);
+  border: 2px solid var(--border-color);
+  color: var(--text-color);
+  border-radius: 6px;
+  width: 200px;
+}
+
+.date-picker:focus {
+  border-color: var(--button-bg);
+  outline: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dock-table {
+    font-size: 14px;
+  }
+
+  .input-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .input-group {
+    width: 100%;
+  }
+
+  .btn-show {
+    width: 100%;
+  }
+}

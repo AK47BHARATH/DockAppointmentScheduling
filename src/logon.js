@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./App.css";
+import "./login.css";
 
 //<img src="/CherryBlossom-logon.jpg" alt="body" className="body" />
 
@@ -16,7 +16,9 @@ const Login = ({ onLogin }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (credentials.username === "admin" && credentials.password === "password") {
+    if (credentials.username === "admin" && credentials.password === "password")
+      
+      {
       onLogin();
       navigate("/homepage"); // Redirect on success
 

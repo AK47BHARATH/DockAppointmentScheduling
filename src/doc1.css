@@ -1,0 +1,146 @@
+/* Container */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    background: #FDF1F7;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  /* Title */
+  .title {
+    font-size: 30px;
+    color: #490825;
+    margin-bottom: 25px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  /* Input Section */
+  .input-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding: 20px;
+    background: #AD1457;
+    border-radius: 10px;
+  }
+  
+  .input-section label {
+    font-weight: bold;
+    color: #490825;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .input-section input {
+    width: 100%;
+    max-width: 280px;
+    padding: 12px;
+    background: #FCE4EE;
+    border: 2px solid #AD1457;
+    border-radius: 6px;
+    font-size: 16px;
+    color: #490825;
+  }
+  
+  .input-section input:focus {
+    border-color: #0a6ed1;
+    outline: none;
+  }
+  
+  /* Appointment Table */
+  .dock-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 25px;
+    background-color: #F8C4DB;
+    text-align: center;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .dock-table th, .dock-table td {
+    border: 1px solid #AD1457;
+    padding: 14px;
+    font-size: 16px;
+    vertical-align: middle;
+  }
+  
+  .dock-table th {
+    background-color: pink;
+    color: white;
+    text-transform: uppercase;
+  }
+  
+  /* Slot Styles */
+  .slot {
+    padding: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s;
+  }
+  
+  .slot:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Slot Colors */
+  .available {
+    background: #AD1457;
+    color: white;
+    border: 2px solid rgba(4, 0, 0, 0.751);
+  }
+  
+  .booked {
+    background: #d32f2f;
+    color: white;
+    border: 2px solid #d32f2f;
+  }
+  
+  .completed {
+    background: #1976d2;
+    color: white;
+    border: 2px solid #1976d2;
+  }
+  
+  /* Date Picker */
+  .date-picker {
+    padding: 12px;
+    font-size: 16px;
+    background: #FCE4EE;
+    border: 2px solid #AD1457;
+    color: #490825;
+    border-radius: 6px;
+    width: 220px;
+  }
+  
+  .date-picker:focus {
+    border-color: #0a6ed1;
+    outline: none;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .dock-table {
+      font-size: 14px;
+    }
+    .input-section {
+      flex-direction: column;
+      align-items: center;
+    }
+    .input-section input {
+      max-width: 100%;
+    }
+  }
+  

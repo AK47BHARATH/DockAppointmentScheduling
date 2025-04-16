@@ -1,23 +1,46 @@
 import axios from "axios";
+import https from 'https';
 
-const BASE_URL = "https://s4hana23.arkania.com:44300/sap/opu/odata/sap/ZAKB_DOCK_APPOINTMENT_SRV?$format=json";
+const BASE_URL = "/sap/opu/odata/sap/ZAKB_DOCK1_APPOINT_SRV/DockAppointment1Set";
 const AUTH = {
   username: "bharathak",
   password: "Akbharath*1$23",
 };
 
+const cert = `
+-----BEGIN CERTIFICATE-----
+MIID... (your certificate content)
+-----END CERTIFICATE-----
+`;
+
+const agent = new https.Agent({
+  ca: cert,
+});
+
 export const getAppointments = async () => {
-  return axios.get(BASE_URL, { auth: AUTH });
-};
-
-export const createAppointment = async (appointmentData) => {
-  return axios.post(BASE_URL, appointmentData, { auth: AUTH });
-};
-
-export const updateAppointment = async (id, updatedData) => {
-  return axios.put(`${BASE_URL}('${id}')`, updatedData, { auth: AUTH });
-};
-
-export const deleteAppointment = async (id) => {
-  return axios.delete(`${BASE_URL}('${id}')`, { auth: AUTH });
+  try {
+    const response = await axios.get(BASE_URL, {
+      auth: AUTH,
+      httpsAgent: agent,
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+      },
+    });
+    const rawData = response.data.d.results || [];
+    const mappedData = rawData.map(item => ({
+      AppointmentID: item.Docno || '',
+      TruckNumber: item.DbKey || '',
+      LoadingPoint: item.Loadpoint || '',
+      Carrier: item.Carrier || '',
+      Mtr: item.Mtr || '',
+      Driver: item.Driver || ''
+    }));
+    console.log('Mapped API Response:', mappedData);
+    return { d: { results: mappedData } };
+  } catch (error) {
+    console.error('Get Appointments Error:', error);
+    throw error;
+  }
 };
