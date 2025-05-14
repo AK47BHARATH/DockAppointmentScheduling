@@ -3,7 +3,7 @@
 
 /* Define Theme Variables */
 :root {
-  --text-color: #490825;
+  --text-color: #15010a;
   --container-bg: #FDF1F7;
   --button-hover: #0856a1;
   --button-bg: #0a6ed1;
@@ -163,4 +163,17 @@ h2 {
     opacity: 1;
     transform: translateY(0);
   }
+}
+.back-button, .forward-button {
+  z-index: 1000;
+}
+
+.back-button button:hover:not(:disabled),
+.forward-button button:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.back-button button:disabled,
+.forward-button button:disabled {
+  opacity: 0.6;
 }
