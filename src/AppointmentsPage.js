@@ -22,7 +22,8 @@ const AppointmentsPage = () => {
         LoadingPoint: item.LoadingPoint,
         Carrier: item.Carrier,
         Mtr: item.Mtr,
-        Driver: item.Driver
+        Driver: item.Driver,
+        StartTime: item.StartTime
       })));
       results = results.filter(item => item.AppointmentID);
       setAppointments(results);
@@ -86,6 +87,7 @@ const AppointmentsPage = () => {
                 <th>Carrier</th>
                 <th>Means of Transport</th>
                 <th>Driver</th>
+                <th>Start Time</th>
               </tr>
             </thead>
             <tbody>
@@ -96,6 +98,7 @@ const AppointmentsPage = () => {
                   <td>{appointment.Carrier || 'N/A'}</td>
                   <td>{appointment.Mtr || 'N/A'}</td>
                   <td>{appointment.Driver || 'N/A'}</td>
+                  <td>{appointment.StartTime || 'N/A'}</td>
                 </tr>
               ))}
             </tbody>

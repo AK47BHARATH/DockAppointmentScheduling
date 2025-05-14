@@ -77,12 +77,6 @@
   "cors": "^2.8.5",
  
    
-  "css-loader": "^6.5.1",
- 
-   
-  "css-minimizer-webpack-plugin": "^3.2.0",
- 
-   
   "dotenv": "^10.0.0",
  
    
@@ -123,9 +117,6 @@
  
    
   "jest-watch-typeahead": "^1.0.0",
- 
-   
-  "mini-css-extract-plugin": "^2.4.5",
  
    
   "pg": "^8.14.0",
@@ -296,7 +287,16 @@
   "autoprefixer": "^10.4.21",
  
    
+  "css-loader": "^7.1.2",
+ 
+   
+  "css-minimizer-webpack-plugin": "^7.0.2",
+ 
+   
   "customize-cra": "^1.0.0",
+ 
+   
+  "mini-css-extract-plugin": "^2.9.2",
  
    
   "postcss": "^8.5.3",
@@ -306,6 +306,9 @@
  
    
   "react-app-rewired": "^2.2.1",
+ 
+   
+  "react-scripts": "^5.0.1",
  
    
   "tailwindcss": "^4.0.17"

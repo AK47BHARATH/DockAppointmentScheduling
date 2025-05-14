@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./login.css";
-
-//<img src="/CherryBlossom-logon.jpg" alt="body" className="body" />
+import "./App.css";
 
 const Login = ({ onLogin }) => {
   const [credentials, setCredentials] = useState({ username: "", password: "" });
   const [error, setError] = useState("");
-  const navigate = useNavigate(); // Hook for navigation
+  const [users, setUsers] = useState([]);
+  const navigate = useNavigate();
+ 
+  useEffect(() => {
+    fetch("/logon.json") // if inside public folder
+      .then((res) => res.json())
+      .then((data) => setUsers(data))
+      .catch((err) => console.error("Failed to load users:", err));
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -16,20 +22,23 @@ const Login = ({ onLogin }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (credentials.username === "admin" && credentials.password === "password")
-      
-      {
-      onLogin();
-      navigate("/homepage"); // Redirect on success
+    const isValidUser = users.some(
+      (user) =>
+        user.username === credentials.username &&
+        user.password === credentials.password
+    );
 
+    if (isValidUser) {
+      onLogin();
+      navigate("/homepage");
     } else {
       setError("Invalid username or password");
     }
   };
 
-
   return (
     <div className="login-container">
+     {/* <img src="/ark.jpg" alt="Ark Logo" className="logo" style={{ position: 'head',top:'100px'  , width: '170px' }} /> */}
       <img src="/CherryBlossom-logon.jpg" alt="Login Background" className="login-bg" />
       <h2>Dock Appointment Login</h2>
       <form onSubmit={handleSubmit}>

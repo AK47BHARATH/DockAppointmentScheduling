@@ -1,0 +1,14 @@
+[
+    {
+      "Warehouse": "CHENNAI WAREHOUSE",
+      "DOCKING LOCATION": "SCU_AKWM",
+      "TM Interval": "30",
+     "LoadingPoints": ["YID01","YID02","YID03"]
+    },
+    {
+      "Warehouse": "BANGALORE WAREHOUSE",
+      "DOCKING LOCATION": "AKB_SUPPLYCHAIN",
+      "TM Interval": "60",
+     "LoadingPoints": ["YAB1", "YAK1"]
+    }
+  ]
