@@ -7,9 +7,9 @@ const Login = ({ onLogin }) => {
   const [error, setError] = useState("");
   const [users, setUsers] = useState([]);
   const navigate = useNavigate();
- 
+
   useEffect(() => {
-    fetch("/logon.json") // if inside public folder
+    fetch("/logon.json")
       .then((res) => res.json())
       .then((data) => setUsers(data))
       .catch((err) => console.error("Failed to load users:", err));
@@ -29,8 +29,8 @@ const Login = ({ onLogin }) => {
     );
 
     if (isValidUser) {
-      onLogin();
-      navigate("/homepage");
+      onLogin?.(credentials.username); // Optional callback
+      navigate("/logonbutton", { state: { username: credentials.username } }); // ✅ Pass username
     } else {
       setError("Invalid username or password");
     }
@@ -38,20 +38,37 @@ const Login = ({ onLogin }) => {
 
   return (
     <div className="login-container">
-     {/* <img src="/ark.jpg" alt="Ark Logo" className="logo" style={{ position: 'head',top:'100px'  , width: '170px' }} /> */}
-      <img src="/CherryBlossom-logon.jpg" alt="Login Background" className="login-bg" />
+      <img
+        src="/CherryBlossom-logon.jpg"
+        alt="Login Background"
+        className="login-bg"
+      />
       <h2>Dock Appointment Login</h2>
       <form onSubmit={handleSubmit}>
         <div className="input-group">
           <label>Username:</label>
-          <input type="text" name="username" value={credentials.username} onChange={handleChange} required />
+          <input
+            type="text"
+            name="username"
+            value={credentials.username}
+            onChange={handleChange}
+            required
+          />
         </div>
         <div className="input-group">
           <label>Password:</label>
-          <input type="password" name="password" value={credentials.password} onChange={handleChange} required />
+          <input
+            type="password"
+            name="password"
+            value={credentials.password}
+            onChange={handleChange}
+            required
+          />
         </div>
         {error && <p className="error-message">{error}</p>}
-        <button type="submit" className="btn-login">Login</button>
+        <button type="submit" className="btn-login">
+          Login
+        </button>
       </form>
     </div>
   );

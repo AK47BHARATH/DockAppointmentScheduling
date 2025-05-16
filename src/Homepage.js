@@ -20,10 +20,10 @@ const Homepage = () => {
         <h1>Welcome to the Dock Appointment System</h1>
         <p>Manage your dock appointments efficiently.</p>
         <button className="btn-navigate" onClick={goToDockScheduler}>
-          Go to Dock Scheduler
+          Dock Scheduler    
         </button>
         <button className="btn-navigate" onClick={goToAppointmentPage}>
-          Go to Appointment Page
+          Appointment Page
         </button>
       </div>
     </div>

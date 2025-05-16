@@ -1,0 +1,64 @@
+Since your SAP OData service is running on port **44300**, you need to adjust your **CORS policy** and **SAP OData request** to properly communicate with your backend.
+
+---
+
+### **✅ Steps to Fix CORS for SAP OData on Port 44300**
+1. **Allow SAP OData's Origin in CORS**
+2. **Update the SAP OData URL in `.env`**
+3. **Handle HTTPS Requests to SAP OData**  
+
+---
+
+### **🔹 Step 1: Allow SAP OData's Origin in CORS**
+Modify the **CORS configuration** in `server.js`:
+```javascript
+app.use(cors({
+  origin: ['http://localhost:3000', 'https://your-sap-server.com:44300'], // Add SAP OData origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
+}));
+```
+Replace `"https://your-sap-server.com:44300"` with your actual SAP server URL.
+
+---
+
+### **🔹 Step 2: Update `.env` with SAP OData URL**
+Make sure your **`.env` file** has the correct SAP OData URL:
+```
+SAP_ODATA_URL=https://your-sap-server.com:44300/sap/opu/odata/sap/ZAKB_DOCK_APPOINTMENT_SRV
+SAP_TOKEN=your_sap_token_here
+```
+---
+
+### **🔹 Step 3: Handle HTTPS Requests to SAP OData**
+If SAP OData requires SSL/TLS, you **must allow self-signed certificates** (if applicable). Modify your **Axios request** in `server.js`:
+
+```javascript
+const https = require('https');
+
+app.get('/api/sap/appointments', async (req, res) => {
+  try {
+    const agent = new https.Agent({ rejectUnauthorized: false }); // Allow self-signed SSL (only if needed)
+
+    const response = await axios.get(`${process.env.SAP_ODATA_URL}/Appointments`, {
+      headers: { Authorization: `Bearer ${process.env.SAP_TOKEN}` },
+      httpsAgent: agent // Use the custom agent for HTTPS requests
+    });
+
+    res.json(response.data);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+```
+⚠️ **Note:** Using `rejectUnauthorized: false` disables SSL verification. Only use this in development. For production, install the **correct SSL certificate** instead.
+
+---
+
+### **🎯 Final Thoughts**
+- Now, your **backend allows requests from both React (`localhost:3000`) and SAP OData (`44300`)**.
+- Your Axios request properly **handles HTTPS requests** to SAP.
+- If your SAP OData is behind **authentication**, ensure you have the correct `SAP_TOKEN`.
+
+🚀 **Your Node.js backend can now fetch data from SAP OData on port `44300`!**

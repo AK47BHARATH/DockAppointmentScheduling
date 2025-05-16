@@ -4,13 +4,19 @@ import DockScheduler from "./DockScheduler";
 import Login from "./logon";
 import Homepage from "./Homepage";
 import AppointmentsPage from "./AppointmentsPage";
+import LogonButton from "./LogonButton";
 import "./App.css";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLogonButtonClicked, setIsLogonButtonClicked] = useState(false);
 
   const handleLogin = () => {
     setIsLoggedIn(true);
+  };
+
+  const handleLogonButtonClick = () => {
+    setIsLogonButtonClicked(true);
   };
 
   return (
@@ -19,16 +25,20 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Login onLogin={handleLogin} />} />
         <Route 
-          path="/DockScheduler" 
-          element={isLoggedIn ? <DockScheduler /> : <Navigate to="/" />} 
+          path="/logonbutton" 
+          element={isLoggedIn ? <LogonButton onButtonClick={handleLogonButtonClick} /> : <Navigate to="/" />} 
         />
         <Route 
           path="/homepage" 
-          element={isLoggedIn ? <Homepage /> : <Navigate to="/" />} 
+          element={isLoggedIn && isLogonButtonClicked ? <Homepage /> : <Navigate to="/logonbutton" />} 
+        />
+        <Route 
+          path="/DockScheduler" 
+          element={isLoggedIn && isLogonButtonClicked ? <DockScheduler /> : <Navigate to="/logonbutton" />} 
         />
         <Route 
           path="/appointments" 
-          element={isLoggedIn ? <AppointmentsPage /> : <Navigate to="/" />} 
+          element={isLoggedIn && isLogonButtonClicked ? <AppointmentsPage /> : <Navigate to="/logonbutton" />} 
         />
       </Routes>
     </Router>
@@ -42,10 +52,12 @@ const BodyClassManager = () => {
     document.body.className = "";
     if (location.pathname === "/") {
       document.body.classList.add("login-bg");
-    } else if (location.pathname === "/DockScheduler") {
-      document.body.classList.add("dock-bg");
+    } else if (location.pathname === "/logonbutton") {
+      document.body.classList.add("logonbutton-bg");
     } else if (location.pathname === "/homepage") {
       document.body.classList.add("homepage-bg");
+    } else if (location.pathname === "/DockScheduler") {
+      document.body.classList.add("dock-bg");
     } else if (location.pathname === "/appointments") {
       document.body.classList.add("appointments-bg");
     }

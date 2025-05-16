@@ -57,13 +57,14 @@
   color: white;
   border: none;
   padding: 12px 24px;
+  margin-right: 10px;
   font-size: 18px;
   font-weight: bold;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   text-transform: uppercase;
-  letter-spacing: 1px;
+ 
 }
 
 .btn-navigate:hover {
