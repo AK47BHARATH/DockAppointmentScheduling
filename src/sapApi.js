@@ -3,8 +3,8 @@ import https from 'https';
 
 const BASE_URL = "/sap/opu/odata/sap/ZAKB_DOCK1_APPOINT_SRV/DockAppointment1Set";
 const AUTH = {
-  username: "",
-  password: "",
+  username:
+  password:
 };
 
 const cert = `
